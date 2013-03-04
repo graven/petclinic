@@ -11,6 +11,7 @@ launch:
         - app-branch:
             description: Source control branch
             default: "oracle"
+            enum:
                 "Green": "oracle"
                 "Red": "oracle-red"
         - db-user:
@@ -171,6 +172,7 @@ scale-up:
         - app-branch:
             description: Source control branch
             default: "oracle"
+            enum:
                 "Green": "oracle"
                 "Red": "oracle-red"
         - db-user:
@@ -286,6 +288,7 @@ update:
         - app-branch:
             description: Source control branch
             default: "oracle"
+            enum:
                 "Green": "oracle"
                 "Red": "oracle-red"
         - db-user:
