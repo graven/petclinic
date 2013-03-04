@@ -7,24 +7,20 @@ launch:
             max: 20
         - app-fork:
             description: Source control fork
-            default: "dieu"
+            default: "graven"
         - app-branch:
             description: Source control branch
             default: "oracle"
-        - app-version:
-            description: Version of the build artifacts
-            default: "1.0.0-SNAPSHOT"
-            enum:
-                "Latest": "1.0.0-SNAPSHOT"
-                "Stable": "1.0.0"
+                "Green": "oracle"
+                "Red": "oracle-red"
         - db-user:
-             description: OracleDB user
+             description: Oracle DB user
              default: "JOHN"
         - db-password:
-             description: OracleDB user passord
+             description: Oracle DB user password
              default: "123qwe123"
         - db-sid:
-             description: OracleDB sid
+             description: Oracle DB SID
              default: "DBORA"
 
     steps:
@@ -138,7 +134,7 @@ launch:
                         wl_home: "/opt/oracle/middleware/wlserver_10.3/"
                         oracle_home: "/opt/oracle/middleware/"
                         apps_array: [{
-                          name: "PetClinic", path: "https://s3.amazonaws.com/undeploy-petstore/${app-fork}/origin/${app-branch}/petclinic-${app-version}.war"
+                          name: "PetClinic", path: "https://s3.amazonaws.com/petclinic/${app-fork}/origin/${app-branch}/petclinic-1.0.0-SNAPSHOT.war"
                         }]
 
         - setup-lb:
@@ -152,13 +148,13 @@ launch:
 
     return:
         app-url:
-            description: Url to the application
+            description: Application URL
             value: http://${lb-hosts}
         haproxy-url:
-            description: Url to haproxy stats
+            description: HAProxy Admin URL
             value: http://${lb-hosts}:22002/
         app-servers:
-            description: IPs for application servers
+            description: App tier IP addresses
             value: ${app-hosts}
 
 
@@ -171,24 +167,20 @@ scale-up:
             max: 20
         - app-fork:
             description: Source control fork
-            default: "dieu"
+            default: "graven"
         - app-branch:
             description: Source control branch
             default: "oracle"
-        - app-version:
-            description: Version of the build artifacts
-            default: "1.0.0-SNAPSHOT"
-            enum:
-                "Latest": "1.0.0-SNAPSHOT"
-                "Stable": "1.0.0"
+                "Green": "oracle"
+                "Red": "oracle-red"
         - db-user:
-             description: OracleDB user
+             description: Oracle DB user
              default: "JOHN"
         - db-password:
-             description: OracleDB user passord
+             description: Oracle DB user password
              default: "123qwe123"
         - db-sid:
-             description: OracleDB sid
+             description: Oracle DB SID
              default: "DBORA"
 
     steps:
@@ -251,7 +243,7 @@ scale-up:
                         wl_home: "/opt/oracle/middleware/wlserver_10.3/"
                         oracle_home: "/opt/oracle/middleware/"
                         apps_array: [{
-                          name: "PetClinic", path: "https://s3.amazonaws.com/undeploy-petstore/${app-fork}/origin/${app-branch}/petclinic-${app-version}.war"
+                          name: "PetClinic", path: "https://s3.amazonaws.com/petclinic/${app-fork}/origin/${app-branch}/petclinic-1.0.0-SNAPSHOT.war"
                         }]
 
         - update-lb:
@@ -294,20 +286,16 @@ update:
         - app-branch:
             description: Source control branch
             default: "oracle"
-        - app-version:
-            description: Version of the build artifacts
-            default: "1.0.0-SNAPSHOT"
-            enum:
-                "Latest": "1.0.0-SNAPSHOT"
-                "Stable": "1.0.0"
+                "Green": "oracle"
+                "Red": "oracle-red"
         - db-user:
-             description: OracleDB user
+             description: Oracle DB user
              default: "JOHN"
         - db-password:
-             description: OracleDB user passord
+             description: Oracle DB password
              default: "123qwe123"
         - db-sid:
-             description: OracleDB sid
+             description: Oracle DB SID
              default: "DBORA"
 
     steps:
@@ -344,7 +332,7 @@ update:
                         wl_home: "/opt/oracle/middleware/wlserver_10.3/"
                         oracle_home: "/opt/oracle/middleware/"
                         apps_array: [{
-                          name: "PetClinic", path: "https://s3.amazonaws.com/undeploy-petstore/${app-fork}/origin/${app-branch}/petclinic-${app-version}.war"
+                          name: "PetClinic", path: "https://s3.amazonaws.com/petclinic/${app-fork}/origin/${app-branch}/petclinic-1.0.0-SNAPSHOT.war"
                         }]
 
 destroy:
